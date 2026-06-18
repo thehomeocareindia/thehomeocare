@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TheHomeoCare — Trusted Homeopathy Clinic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:#1a1a1a;background:#fff;-webkit-font-smoothing:antialiased;}
+
+:root{
+  --blue:#1a6b3a;
+  --blue-dark:#0f4223;
+  --blue-light:#e8f5ee;
+  --gold:#C8972A;
+  --green:#2e7d32;
+  --text:#1a1a1a;
+  --muted:#5a5a6e;
+  --border:#e2e6ef;
+  --bg-light:#f5f8ff;
+}
+
+a{text-decoration:none;color:inherit;}
+
+/* ===== TOP BAR ===== */
+.top-bar{
+  background:var(--blue-dark);
+  color:#fff;
+  font-size:0.82rem;
+  padding:8px 0;
+}
+.top-bar-inner{
+  max-width:1200px;margin:0 auto;padding:0 20px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;
+}
+.top-contacts{display:flex;gap:24px;align-items:center;flex-wrap:wrap;}
+.top-contacts a{color:#c9d8ef;display:flex;align-items:center;gap:6px;transition:color .2s;}
+.top-contacts a:hover{color:#fff;}
+.top-contacts .icon{font-size:1rem;}
+.top-right{display:flex;gap:12px;align-items:center;}
+.top-right a{
+  color:#fff;font-weight:600;font-size:0.82rem;padding:5px 14px;
+  border:1px solid rgba(255,255,255,0.4);border-radius:20px;transition:background .2s;
+}
+.top-right a:hover{background:rgba(255,255,255,0.15);}
+.top-right a.cta{background:var(--gold);border-color:var(--gold);color:#fff;}
+.top-right a.cta:hover{background:#a8791e;}
+
+/* ===== NAV ===== */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:#e8f5ee;
+  border-bottom:2px solid #b2d8be;
+  box-shadow:0 2px 16px rgba(26,122,60,0.1);
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;padding:0 20px;
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;height:76px;gap:16px;
+}
+.logo{
+  font-family:'Merriweather',serif;font-size:1.4rem;font-weight:700;
+  color:#145c2d;display:flex;align-items:center;gap:10px;
+  justify-content:center;grid-column:2;
+}
+.logo span{color:var(--gold);}
+.logo svg{flex-shrink:0;}
+.nav-menu{display:flex;align-items:center;gap:4px;grid-column:3;justify-content:flex-end;}
+.nav-menu > li{list-style:none;position:relative;}
+.nav-menu > li > a{
+  display:flex;align-items:center;gap:4px;padding:10px 14px;
+  font-size:0.9rem;font-weight:600;color:#1a7a3c;border-radius:6px;
+  transition:color .2s,background .2s;white-space:nowrap;
+}
+.nav-menu > li > a:hover{color:#145c2d;background:rgba(26,122,60,0.1);}
+.nav-menu > li > a .arrow{font-size:0.7rem;transition:transform .2s;}
+.nav-menu > li:hover > a .arrow{transform:rotate(180deg);}
+.dropdown{
+  position:absolute;top:100%;right:0;min-width:220px;
+  background:#fff;border:1px solid var(--border);border-radius:10px;
+  box-shadow:0 12px 40px rgba(0,0,0,0.15);padding:8px 0;
+  opacity:0;visibility:hidden;transform:translateY(8px);
+  transition:all .25s;z-index:300;
+}
+.nav-menu > li:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+.dropdown a{
+  display:block;padding:10px 20px;font-size:0.88rem;color:var(--text);
+  transition:background .15s,color .15s;
+}
+.dropdown a:hover{background:var(--blue-light);color:var(--blue);}
+.nav-cta{
+  background:var(--gold)!important;color:#fff!important;padding:10px 22px!important;
+  border-radius:25px!important;font-weight:700!important;
+  transition:background .2s,transform .2s!important;
+  box-shadow:0 4px 14px rgba(200,151,42,0.35);
+}
+.nav-cta:hover{background:#a8791e!important;transform:translateY(-1px);}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:6px;grid-column:3;justify-self:end;}
+.nav-toggle span{width:24px;height:2px;background:#1a7a3c;border-radius:2px;}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;background:linear-gradient(135deg,#072912 0%,#0f4223 50%,#1a6b3a 100%);
+  min-height:92vh;display:flex;align-items:center;overflow:hidden;
+}
+.hero-bg-circles{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.hero-bg-circles circle{fill:rgba(255,255,255,0.03);}
+.hero-inner{
+  max-width:1200px;margin:0 auto;padding:80px 20px;
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(200,151,42,0.2);color:var(--gold);
+  border:1px solid rgba(200,151,42,0.4);border-radius:20px;
+  font-size:0.82rem;font-weight:700;padding:6px 16px;
+  letter-spacing:0.06em;text-transform:uppercase;margin-bottom:22px;
+}
+.hero h1{
+  font-family:'Merriweather',serif;
+  font-size:clamp(2rem,4.2vw,3.2rem);
+  color:#fff;line-height:1.2;margin-bottom:20px;font-weight:700;
+}
+.hero h1 em{font-style:italic;color:#a8d8b8;}
+.hero-sub{
+  font-size:1.08rem;color:rgba(255,255,255,0.78);
+  max-width:480px;margin-bottom:36px;line-height:1.7;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-hero-primary{
+  background:var(--gold);color:#fff;padding:15px 32px;
+  border-radius:30px;font-weight:700;font-size:0.98rem;
+  display:inline-flex;align-items:center;gap:10px;
+  box-shadow:0 8px 24px rgba(200,151,42,0.4);
+  transition:transform .2s,box-shadow .2s;
+}
+.btn-hero-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(200,151,42,0.5);}
+.btn-hero-outline{
+  background:transparent;color:#fff;padding:15px 32px;
+  border-radius:30px;font-weight:700;font-size:0.98rem;
+  border:2px solid rgba(255,255,255,0.5);
+  display:inline-flex;align-items:center;gap:10px;
+  transition:border-color .2s,background .2s;
+}
+.btn-hero-outline:hover{border-color:#fff;background:rgba(255,255,255,0.1);}
+
+/* STATS */
+.stats-row{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:0;
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+  border-radius:16px;margin-top:48px;overflow:hidden;
+}
+.stat-item{
+  text-align:center;padding:22px 12px;
+  border-right:1px solid rgba(255,255,255,0.1);
+}
+.stat-item:last-child{border-right:none;}
+.stat-num{
+  font-family:'Merriweather',serif;font-size:2rem;font-weight:700;
+  color:var(--gold);line-height:1;
+}
+.stat-label{font-size:0.78rem;color:rgba(255,255,255,0.6);margin-top:5px;font-weight:500;}
+
+/* Hero right illustration */
+.hero-right{
+  display:flex;flex-direction:column;gap:18px;
+}
+.hero-card{
+  background:rgba(255,255,255,0.08);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.15);border-radius:16px;
+  padding:22px;color:#fff;
+}
+.hero-card h3{font-size:1rem;font-weight:700;margin-bottom:6px;color:#a8d8b8;}
+.hero-card p{font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.5;}
+.mini-form{display:flex;flex-direction:column;gap:10px;}
+.mini-form select,.mini-form input{
+  padding:10px 14px;border-radius:8px;border:1px solid rgba(255,255,255,0.2);
+  background:rgba(255,255,255,0.1);color:#fff;font-size:0.9rem;font-family:'Inter',sans-serif;
+  outline:none;
+}
+.mini-form select option{background:#0f4223;color:#fff;}
+.mini-form select::placeholder,.mini-form input::placeholder{color:rgba(255,255,255,0.5);}
+.mini-form .btn-form{
+  background:var(--blue);border:none;color:#fff;padding:12px;
+  border-radius:8px;font-weight:700;font-size:0.95rem;cursor:pointer;
+  transition:background .2s;
+}
+.mini-form .btn-form:hover{background:var(--blue-dark);}
+.trust-badges{display:flex;gap:12px;flex-wrap:wrap;}
+.badge{
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
+  border-radius:8px;padding:10px 14px;text-align:center;flex:1;min-width:90px;
+}
+.badge .b-num{font-weight:800;font-size:1.2rem;color:#a8d8b8;}
+.badge .b-label{font-size:0.72rem;color:rgba(255,255,255,0.65);margin-top:2px;}
+
+/* ===== SECTIONS ===== */
+section{padding:80px 0;}
+.container{max-width:1200px;margin:0 auto;padding:0 20px;}
+.section-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--blue);font-size:0.82rem;font-weight:700;
+  letter-spacing:0.06em;text-transform:uppercase;margin-bottom:12px;
+}
+.section-tag::before,.section-tag::after{
+  content:'';height:1px;width:30px;background:var(--blue);display:inline-block;opacity:0.5;
+}
+.section-head{text-align:center;max-width:640px;margin:0 auto 50px;}
+.section-head h2{
+  font-family:'Merriweather',serif;
+  font-size:clamp(1.7rem,3vw,2.4rem);color:var(--blue-dark);margin-bottom:14px;
+}
+.section-head p{color:var(--muted);font-size:1.02rem;line-height:1.7;}
+
+/* ===== DISEASE PILLS ===== */
+.diseases-bg{background:var(--bg-light);}
+.disease-scroll{overflow:hidden;position:relative;margin-top:10px;}
+.disease-scroll::before,.disease-scroll::after{
+  content:'';position:absolute;top:0;width:80px;height:100%;z-index:2;pointer-events:none;
+}
+.disease-scroll::before{left:0;background:linear-gradient(to right,var(--bg-light),transparent);}
+.disease-scroll::after{right:0;background:linear-gradient(to left,var(--bg-light),transparent);}
+.disease-track{
+  display:flex;gap:12px;width:max-content;
+  animation:scrollLeft 35s linear infinite;
+}
+.disease-track:hover{animation-play-state:paused;}
+.disease-track2{animation-direction:reverse;animation-duration:40s;}
+@keyframes scrollLeft{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.d-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fff;border:1px solid var(--border);border-radius:25px;
+  padding:10px 18px;white-space:nowrap;font-size:0.88rem;font-weight:600;
+  color:var(--blue-dark);cursor:pointer;transition:all .2s;flex-shrink:0;
+}
+.d-pill:hover{background:var(--blue);color:#fff;border-color:var(--blue);}
+.d-pill-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+.disease-rows{display:flex;flex-direction:column;gap:14px;}
+.view-more-wrap{text-align:center;margin-top:30px;}
+.btn-outline-blue{
+  display:inline-flex;align-items:center;gap:8px;
+  border:2px solid var(--blue);color:var(--blue);padding:13px 30px;
+  border-radius:30px;font-weight:700;font-size:0.95rem;
+  transition:all .2s;
+}
+.btn-outline-blue:hover{background:var(--blue);color:#fff;}
+
+/* ===== WHY US ===== */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.why-card{
+  background:#fff;border:1px solid var(--border);border-radius:16px;
+  padding:30px 24px;text-align:center;
+  transition:transform .25s,box-shadow .25s,border-color .25s;
+}
+.why-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(26,107,58,0.12);border-color:var(--blue);}
+.why-icon{
+  width:62px;height:62px;border-radius:50%;
+  background:var(--blue-light);display:flex;align-items:center;justify-content:center;
+  margin:0 auto 18px;font-size:1.8rem;
+}
+.why-card h3{font-size:1rem;font-weight:700;color:var(--blue-dark);margin-bottom:8px;}
+.why-card p{font-size:0.88rem;color:var(--muted);line-height:1.6;}
+
+/* ===== ABOUT DOC ===== */
+.about-section{background:linear-gradient(135deg,#f0f6ff 0%,#fff 100%);}
+.about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:60px;align-items:center;}
+.about-img-wrap{position:relative;}
+.about-img-box{
+  background:linear-gradient(145deg,var(--blue) 0%,var(--blue-dark) 100%);
+  border-radius:20px;aspect-ratio:4/5;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.about-img-box svg{width:70%;height:auto;}
+.about-exp-badge{
+  position:absolute;bottom:-16px;right:-16px;
+  background:var(--gold);color:#fff;border-radius:14px;
+  padding:16px 22px;text-align:center;box-shadow:0 8px 24px rgba(200,151,42,0.4);
+}
+.about-exp-badge .exp-num{font-family:'Merriweather',serif;font-size:2.2rem;font-weight:700;line-height:1;}
+.about-exp-badge .exp-label{font-size:0.78rem;font-weight:600;margin-top:4px;opacity:0.9;}
+.about-content h2{font-family:'Merriweather',serif;font-size:2rem;color:var(--blue-dark);margin-bottom:16px;}
+.about-content p{color:var(--muted);font-size:1rem;line-height:1.75;margin-bottom:14px;}
+.cred-list{display:flex;flex-direction:column;gap:10px;margin:22px 0;}
+.cred-item{
+  display:flex;align-items:center;gap:12px;
+  font-size:0.92rem;color:var(--text);
+}
+.cred-item::before{
+  content:'✓';width:22px;height:22px;border-radius:50%;
+  background:var(--blue);color:#fff;font-size:0.72rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.btn-blue{
+  background:var(--blue);color:#fff;padding:14px 30px;
+  border-radius:30px;font-weight:700;font-size:0.95rem;
+  display:inline-flex;align-items:center;gap:10px;
+  box-shadow:0 6px 20px rgba(26,107,58,0.3);
+  transition:background .2s,transform .2s;
+}
+.btn-blue:hover{background:var(--blue-dark);transform:translateY(-2px);}
+
+/* ===== PROCESS ===== */
+.process-bg{background:var(--bg-light);}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+.process-steps::after{
+  content:'';position:absolute;top:36px;left:calc(12.5% + 12px);right:calc(12.5% + 12px);
+  height:2px;background:linear-gradient(to right,var(--blue),var(--gold));z-index:0;
+}
+.step{text-align:center;padding:0 16px;position:relative;z-index:1;}
+.step-num{
+  width:70px;height:70px;border-radius:50%;
+  background:var(--blue);color:#fff;
+  font-family:'Merriweather',serif;font-size:1.5rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 20px;border:4px solid #fff;
+  box-shadow:0 6px 20px rgba(26,107,58,0.3);
+}
+.step h3{font-size:0.98rem;font-weight:700;color:var(--blue-dark);margin-bottom:8px;}
+.step p{font-size:0.85rem;color:var(--muted);line-height:1.6;}
+
+/* ===== TESTIMONIALS ===== */
+.testi-bg{background:#fff0f0;}
+.testi-bg .section-head h2{color:#7a1c1c;}
+.testi-bg .section-tag{color:#c0392b;}
+.testi-bg .section-tag::before,.testi-bg .section-tag::after{background:#c0392b;}
+.testi-bg .section-head p{color:#8a4a4a;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.testi-card{
+  background:#fff;border:1px solid #f5c6c6;
+  border-radius:16px;padding:28px;
+  transition:transform .25s,background .25s;
+}
+.testi-card:hover{transform:translateY(-4px);background:#fff8f8;}
+.testi-stars{color:var(--gold);font-size:0.95rem;letter-spacing:2px;margin-bottom:14px;}
+.testi-quote{
+  font-size:0.94rem;color:rgba(255,255,255,0.82);
+  line-height:1.7;margin-bottom:20px;font-style:italic;
+}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.testi-av{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--gold);color:#fff;
+  font-weight:700;font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.testi-name{font-weight:700;font-size:0.9rem;color:#fff;}
+.testi-info{font-size:0.8rem;color:rgba(255,255,255,0.5);}
+.testi-disease{
+  display:inline-block;background:rgba(200,151,42,0.25);color:var(--gold);
+  font-size:0.75rem;font-weight:600;padding:3px 10px;border-radius:12px;margin-top:5px;
+}
+
+/* ===== BOOKING ===== */
+.booking-inner{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;
+}
+.booking-info h2{font-family:'Merriweather',serif;font-size:2rem;color:var(--blue-dark);margin-bottom:14px;}
+.booking-info p{color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:24px;}
+.contact-cards{display:flex;flex-direction:column;gap:14px;}
+.contact-card{
+  display:flex;align-items:center;gap:16px;
+  background:var(--bg-light);border:1px solid var(--border);border-radius:12px;padding:16px 20px;
+  transition:border-color .2s;
+}
+.contact-card:hover{border-color:var(--blue);}
+.cc-icon{
+  width:44px;height:44px;border-radius:10px;background:var(--blue);
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;
+}
+.cc-label{font-size:0.78rem;color:var(--muted);margin-bottom:2px;}
+.cc-val{font-weight:700;font-size:0.95rem;color:var(--blue-dark);}
+.booking-form-wrap{
+  background:#fff;border:1px solid var(--border);border-radius:20px;padding:36px;
+  box-shadow:0 8px 32px rgba(26,107,58,0.08);
+}
+.booking-form-wrap h3{font-family:'Merriweather',serif;font-size:1.3rem;color:var(--blue-dark);margin-bottom:22px;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-group{display:flex;flex-direction:column;gap:6px;}
+.form-group.full{grid-column:1/-1;}
+.form-group label{font-size:0.82rem;font-weight:600;color:var(--text);}
+.form-group input,.form-group select,.form-group textarea{
+  padding:11px 14px;border:1.5px solid var(--border);border-radius:8px;
+  font-size:0.92rem;font-family:'Inter',sans-serif;color:var(--text);
+  outline:none;transition:border-color .2s;background:#fff;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);}
+.form-group textarea{resize:vertical;min-height:90px;}
+.btn-submit{
+  width:100%;background:var(--blue);color:#fff;
+  padding:14px;border-radius:30px;border:none;
+  font-weight:700;font-size:1rem;cursor:pointer;
+  margin-top:6px;transition:background .2s,transform .2s;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  font-family:'Inter',sans-serif;
+}
+.btn-submit:hover{background:var(--blue-dark);transform:translateY(-1px);}
+
+/* ===== FOOTER ===== */
+footer{background:#0f2a18;color:#fff;padding:60px 0 0;}
+.footer-grid{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:40px;padding-bottom:40px;border-bottom:1px solid #f5c6c6;
+}
+.footer-brand .logo{color:#fff;font-size:1.2rem;margin-bottom:14px;justify-content:flex-start;}
+.footer-brand .logo span{color:var(--gold);}
+.footer-brand p{color:rgba(255,255,255,0.6);font-size:0.88rem;line-height:1.7;max-width:280px;text-align:left;}
+.footer-col h4{
+  color:var(--gold);font-size:0.8rem;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;
+}
+.footer-col a,.footer-col p{
+  display:block;color:rgba(255,255,255,0.55);font-size:0.88rem;margin-bottom:10px;
+  transition:color .2s;
+}
+.footer-col a:hover{color:#fff;}
+.footer-bottom{
+  text-align:center;padding:20px;
+  color:rgba(255,255,255,0.35);font-size:0.82rem;
+}
+
+/* ===== WHATSAPP ===== */
+.wa-float{
+  position:fixed;bottom:24px;right:24px;
+  background:#25D366;width:56px;height:56px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 20px rgba(0,0,0,0.3);z-index:500;
+  transition:transform .2s;
+}
+.wa-float:hover{transform:scale(1.1);}
+.wa-float svg{width:28px;height:28px;fill:#fff;}
+
+/* ===== MOBILE ===== */
+@media(max-width:900px){
+  .top-contacts .phone-text{display:none;}
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .stats-row{grid-template-columns:repeat(3,1fr);}
+  .stats-row .stat-item:nth-child(4),.stats-row .stat-item:nth-child(5){display:none;}
+  .why-grid{grid-template-columns:1fr 1fr;}
+  .about-grid{grid-template-columns:1fr;}
+  .about-img-wrap{max-width:320px;margin:0 auto;}
+  .process-steps{grid-template-columns:1fr 1fr;gap:30px;}
+  .process-steps::after{display:none;}
+  .testi-grid{grid-template-columns:1fr;}
+  .booking-inner{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .nav-menu{display:none;}
+  .nav-toggle{display:flex;}
+  .nav-menu.open{
+    display:flex;flex-direction:column;
+    position:absolute;top:100%;left:0;right:0;
+    background:#e8f5ee;border-bottom:1px solid #b2d8be;
+    padding:16px 20px;gap:4px;box-shadow:0 8px 24px rgba(26,122,60,0.15);
+  }
+  .nav-menu.open .dropdown{
+    position:static;opacity:1;visibility:visible;
+    transform:none;box-shadow:none;border:none;
+    padding:4px 0 4px 16px;
+  }
+  .form-grid{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .why-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:repeat(2,1fr);}
+}
+@media(prefers-reduced-motion:reduce){
+  .disease-track{animation:none;}
+  *{transition:none!important;}
+}
+#about-tag::before, #about-tag::after { display:none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="23,2 41,12 41,34 23,44 5,34 5,12" fill="#1a7a3c"/>
+        <polygon points="23,6 37,14 37,32 23,40 9,32 9,14" fill="none" stroke="white" stroke-width="0.8" opacity="0.2"/>
+        <circle cx="23" cy="18" r="7" fill="none" stroke="white" stroke-width="2.5"/>
+        <line x1="23" y1="25" x2="23" y2="35" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="23" cy="37" r="2.5" fill="#C8972A" stroke="white" stroke-width="1.5"/>
+      </svg>
+      The <span style="color:var(--gold);">HomeoCare</span>
+    </a>
+    <ul class="nav-menu" id="navMenu">
+    </ul>
+  </div>
+</nav>
+
+<!-- ACTION STRIP -->
+<div class="action-strip">
+  <div class="action-strip-inner">
+    <a href="tel:+918452044042" class="action-btn call-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call Us
+    </a>
+    <a href="https://wa.me/918452044042?text=Hi%20Dr.%20Samaita%2C%20I%20would%20like%20to%20book%20a%20consultation." target="_blank" rel="noopener" class="action-btn whatsapp-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.78.46 3.45 1.32 4.91L2 22l5.31-1.39a9.85 9.85 0 0 0 4.73 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.07c-.25.7-1.45 1.34-2 1.42-.51.08-1.16.11-1.87-.12-.43-.14-.98-.32-1.69-.63-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.22-1.62-1.22-3.09 0-1.47.77-2.19 1.05-2.49.27-.3.6-.37.8-.37.2 0 .4.002.57.01.18.01.43-.07.68.52.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.77 1.27 1.65 2.06 1.14 1.02 2.1 1.34 2.4 1.49.3.15.48.13.66-.05.18-.18.77-.9.97-1.2.2-.3.4-.25.67-.15.27.1 1.7.8 2 .95.3.15.5.22.57.34.07.13.07.74-.18 1.44z"/></svg>
+      WhatsApp Us
+    </a>
+    <a href="#booking" class="action-btn book-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Book Appointment
+    </a>
+  </div>
+</div>
+<style>
+.action-strip{background:#f0faf4;border-bottom:2px solid #c8e6d0;padding:10px 0;}
+.action-strip-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;}
+.action-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border-radius:25px;font-size:0.92rem;font-weight:700;transition:transform .2s,box-shadow .2s;white-space:nowrap;}
+.action-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.15);}
+.call-btn{background:#fff;color:#1a7a3c;border:2px solid #1a7a3c;}
+.call-btn:hover{background:#1a7a3c;color:#fff;}
+.whatsapp-btn{background:#25D366;color:#fff;border:2px solid #25D366;}
+.whatsapp-btn:hover{background:#1da851;}
+.book-btn{background:#1a7a3c;color:#fff;border:2px solid #1a7a3c;box-shadow:0 4px 14px rgba(26,122,60,0.3);}
+.book-btn:hover{background:#145c2d;}
+@media(max-width:600px){.action-btn{padding:9px 16px;font-size:0.85rem;}}
+</style>
+
+<!-- HERO -->
+<header class="hero">
+  <svg class="hero-bg-circles" style="position:absolute;inset:0;width:100%;height:100%;" viewBox="0 0 1200 700" fill="none" preserveAspectRatio="xMidYMid slice">
+    <circle cx="1000" cy="100" r="300" fill="rgba(255,255,255,0.04)"/>
+    <circle cx="100" cy="600" r="250" fill="rgba(255,255,255,0.03)"/>
+    <circle cx="600" cy="400" r="180" fill="rgba(255,255,255,0.02)"/>
+  </svg>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🌿 Trusted Homeopathy Since 2016</div>
+      <h1>Healing that treats <em>you</em>, not just your disease</h1>
+      <p class="hero-sub">Classical homeopathic care for 50+ chronic and recurring conditions. Online consultations & in-clinic visits available across India.</p>
+      <div class="hero-btns">
+        <a href="#booking" class="btn-hero-primary">Book Appointment →</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stats-row" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;overflow:hidden;margin-bottom:16px;">
+        <div class="stat-item">
+          <div class="stat-num" data-target="10">0</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-target="50">0</div>
+          <div class="stat-label">Diseases Treated</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-target="500">0</div>
+          <div class="stat-label">Happy Patients</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-target="3">0</div>
+          <div class="stat-label">Expert Doctors</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-target="10">0</div>
+          <div class="stat-label">Cities Served</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" style="font-size:1.3rem;">✓</div>
+          <div class="stat-label">Certified BHMS</div>
+        </div>
+      </div>
+      <div class="trust-badges">
+        <div class="badge"><div class="b-num">BHMS</div><div class="b-label">Qualified Doctor</div></div>
+        <div class="badge"><div class="b-num">100%</div><div class="b-label">Natural Remedies</div></div>
+        <div class="badge"><div class="b-num">Online</div><div class="b-label">Consultations</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- DISEASES -->
+<section class="diseases-bg" id="diseases">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag">Conditions We Treat</div>
+      <h2>100+ Diseases Treated with Homeopathy</h2>
+      <p>Safe, gentle, and effective constitutional treatment for chronic and recurring conditions across all age groups.</p>
+    </div>
+    <div class="disease-rows">
+      <div class="disease-scroll">
+        <div class="disease-track" id="track1">
+          <div class="d-pill"><span class="d-pill-dot"></span>Psoriasis</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Eczema</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Vitiligo</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Migraine</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Asthma</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Thyroid</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>PCOD / PCOS</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Hair Fall</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Alopecia Areata</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Anxiety</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Insomnia</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>IBS</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Arthritis</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Tonsillitis</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Urticaria</div>
+          <!-- duplicate for loop -->
+          <div class="d-pill"><span class="d-pill-dot"></span>Psoriasis</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Eczema</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Vitiligo</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Migraine</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Asthma</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Thyroid</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>PCOD / PCOS</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Hair Fall</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Alopecia Areata</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Anxiety</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Insomnia</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>IBS</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Arthritis</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Tonsillitis</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Urticaria</div>
+        </div>
+      </div>
+      <div class="disease-scroll">
+        <div class="disease-track disease-track2">
+          <div class="d-pill"><span class="d-pill-dot"></span>Lichen Planus</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Kidney Stones</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Acne</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Diabetes</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Cervical Spondylitis</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Sinusitis</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Hepatitis</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Ulcerative Colitis</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Frequent Colds</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Fibromyalgia</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Leucorrhoea</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Dandruff</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Warts</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Gout</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Piles</div>
+          <!-- duplicate -->
+          <div class="d-pill"><span class="d-pill-dot"></span>Lichen Planus</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Kidney Stones</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Acne</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Diabetes</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Cervical Spondylitis</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Sinusitis</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Hepatitis</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Ulcerative Colitis</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Frequent Colds</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Fibromyalgia</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Leucorrhoea</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Dandruff</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Warts</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Gout</div>
+          <div class="d-pill"><span class="d-pill-dot"></span>Piles</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag">Why Choose Us</div>
+      <h2>What Makes TheHomeoCare Different</h2>
+      <p>Evidence-based classical homeopathy with a patient-first approach — for lasting results, not just symptom relief.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">🏆</div><h3>10+ Years of Expertise</h3><p>Experienced BHMS qualified doctors with specialisation in chronic and recurring disease management.</p></div>
+      <div class="why-card"><div class="why-icon">🌿</div><h3>100% Natural Remedies</h3><p>Pure homeopathic medicines sourced from natural materials — no steroids, no side effects.</p></div>
+      <div class="why-card"><div class="why-icon">💻</div><h3>Online Consultations</h3><p>Consult from the comfort of your home. Video, audio, or chat — your choice, your schedule.</p></div>
+      <div class="why-card"><div class="why-icon">📋</div><h3>Personalised Treatment</h3><p>Detailed case history, constitutional analysis, and individualised remedy selection for every patient.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <div class="about-img-box">
+          <svg viewBox="0 0 200 260" fill="none">
+            <circle cx="100" cy="80" r="50" fill="#fff" fill-opacity="0.9"/>
+            <circle cx="100" cy="70" r="26" fill="#C8972A" fill-opacity="0.9"/>
+            <path d="M58 155c0-23 19-38 42-38s42 15 42 38" fill="#C8972A" fill-opacity="0.9"/>
+            <rect x="30" y="170" width="140" height="70" rx="12" fill="#fff" fill-opacity="0.1" stroke="#fff" stroke-opacity="0.2" stroke-width="1"/>
+            <text x="100" y="196" text-anchor="middle" fill="#fff" font-size="11" font-family="Inter" font-weight="700">Dr. Samaita Das</text>
+            <text x="100" y="212" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-size="10" font-family="Inter" font-weight="600">BHMS</text>
+            <text x="100" y="226" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9" font-family="Inter">Classical Homeopathy</text>
+          </svg>
+        </div>
+        <div class="about-exp-badge">
+          <div class="exp-num">10+</div>
+          <div class="exp-label">Years<br>in Practice</div>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-tag" style="letter-spacing:0.06em;" id="about-tag">Meet Dr. Samaita Das, B.H.M.S</div>
+        <h2>Classical Homeopathy, Practised with Dedication</h2>
+        <p>Dr. Samaita Das is a dedicated classical homeopath with over a decade of hands-on clinical experience. Her consultations are never rushed — every patient receives an in-depth case analysis covering physical symptoms, mental state, emotional patterns, and personal history, because true homeopathic healing begins with truly understanding the individual.</p>
+        <p>Specialising in chronic skin conditions, hormonal imbalances, paediatric care, and auto-immune disorders, Dr. Das selects constitutional remedies with precision — treating the root cause, not masking the surface. Her patients experience not just symptom relief, but lasting, measurable improvement in overall wellbeing.</p>
+        <div class="cred-list">
+          <div class="cred-item">BHMS — Qualified & Registered Homeopathic Physician</div>
+          <div class="cred-item">10+ years of senior clinical practice</div>
+          <div class="cred-item">500+ patients treated, including complex long-standing cases</div>
+          <div class="cred-item">In-clinic consultations in Midnapore & online pan-India</div>
+          <div class="cred-item">Personalised follow-up every 3–4 weeks for steady, tracked recovery</div>
+        </div>
+        <a href="#booking" class="btn-blue">Book a Consultation →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-bg">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag">How It Works</div>
+      <h2>Your Healing Journey in 4 Steps</h2>
+      <p>Simple, structured, and completely patient-friendly — from first consultation to lasting results.</p>
+    </div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Book Your Consultation</h3>
+        <p>Choose an in-clinic or online slot. Pick a date and time that works for you.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Detailed Case Study</h3>
+        <p>60-minute consultation covering your complete health history, lifestyle, and mental state.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Personalised Remedy</h3>
+        <p>Constitutional remedy selected specifically for your case — delivered to your door.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Follow-Up & Recovery</h3>
+        <p>Regular follow-ups every 4–6 weeks to track progress and adjust treatment as needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-bg" id="testimonials">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag">Patient Stories</div>
+      <h2>Real Patients, Real Results</h2>
+      <p>Hundreds of patients have found lasting relief through classical homeopathy. Here are a few of their stories.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">My psoriasis patches of 8 years have reduced by over 80% after 6 months of treatment. The doctor took time to understand my stress triggers too — something no one ever asked before.</p>
+        <div class="testi-author">
+          <div class="testi-av">P</div>
+          <div>
+            <div class="testi-name">Priya N.</div>
+            <div class="testi-info">Nagpur <span class="testi-disease">Psoriasis</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">My son's recurring tonsillitis stopped completely within 4 months. No more antibiotics every month. We're so relieved and the online follow-ups made it very convenient.</p>
+        <div class="testi-author">
+          <div class="testi-av">R</div>
+          <div>
+            <div class="testi-name">Rajan M.</div>
+            <div class="testi-info">Pune <span class="testi-disease">Tonsillitis</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">PCOS diagnosed 3 years ago. Cycles irregular, weight gain, hair fall. Started treatment 8 months ago — cycles now regular and ultrasound shows significant improvement in ovaries.</p>
+        <div class="testi-author">
+          <div class="testi-av">S</div>
+          <div>
+            <div class="testi-name">Swati K.</div>
+            <div class="testi-info">Mumbai <span class="testi-disease">PCOS</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking" style="padding:80px 0;">
+  <div class="container">
+    <!-- Calendly inline widget -->
+    <div style="background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(26,107,58,0.08);margin-bottom:30px;">
+      <div class="calendly-inline-widget"
+        data-url="https://calendly.com/thehomeocareindia/30min?hide_event_type_details=0&hide_gdpr_banner=1&background_color=f0faf4&text_color=0f2a18&primary_color=1a7a3c"
+        style="min-width:280px;height:700px;">
+      </div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    </div>
+    <div class="booking-inner" id="contact" style="margin-top:30px;">
+      <div class="booking-info">
+        <div class="section-tag">Can't find a slot?</div>
+        <h2>Reach Us Directly</h2>
+        <p>Call or WhatsApp Dr. Samaita Das directly to book a convenient time for your consultation.</p>
+        <div class="contact-cards">
+          <a href="tel:+918452044042" class="contact-card">
+            <div class="cc-icon">📞</div>
+            <div>
+              <div class="cc-label">Call Us</div>
+              <div class="cc-val">+91 84520 44042</div>
+            </div>
+          </a>
+          <a href="https://wa.me/918452044042?text=Hi%20Dr.%20Samaita%2C%20I%20would%20like%20to%20book%20a%20homeopathy%20consultation." target="_blank" class="contact-card">
+            <div class="cc-icon" style="background:#25D366;">💬</div>
+            <div>
+              <div class="cc-label">WhatsApp</div>
+              <div class="cc-val">Chat with Dr. Samaita Das</div>
+            </div>
+          </a>
+          <div class="contact-card">
+            <div class="cc-icon">🕐</div>
+            <div>
+              <div class="cc-label">Clinic Hours</div>
+              <div class="cc-val">Mon–Sun: 8 AM – 11 PM</div>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="cc-icon">📍</div>
+            <div>
+              <div class="cc-label">Clinic Address</div>
+              <div class="cc-val">C/O: Dr. Samaita Das, Sukantapally, Midnapore</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="booking-form-wrap" style="padding:0;overflow:hidden;">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfKg_P1bYZciz8dfCC11_kCo6atvoquJRK1ayO_3qnf8ICcdw/viewform?embedded=true"
+          width="100%"
+          height="900"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          style="display:block;border:none;">
+          Loading…
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand" style="text-align:left;">
+        <div class="logo">
+          <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="23,2 41,12 41,34 23,44 5,34 5,12" fill="#1a7a3c"/>
+            <polygon points="23,6 37,14 37,32 23,40 9,32 9,14" fill="none" stroke="white" stroke-width="0.8" opacity="0.2"/>
+            <circle cx="23" cy="18" r="7" fill="none" stroke="white" stroke-width="2.5"/>
+            <line x1="23" y1="25" x2="23" y2="35" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="23" cy="37" r="2.5" fill="#C8972A" stroke="white" stroke-width="1.5"/>
+          </svg>
+          The <span style="color:var(--gold);">HomeoCare</span>
+        </div>
+        <p>Classical homeopathic care for chronic and recurring conditions — for the whole family, with patience and precision.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Appointment</h4>
+        <a href="#booking">📅 Book Appointment</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <a href="tel:+918452044042">📞 +91 84520 44042</a>
+        <a href="https://wa.me/918452044042" target="_blank">💬 WhatsApp Us</a>
+        <a href="mailto:thehomeocare@gmail.com">✉️ thehomeocare@gmail.com</a>
+        <p>📍 C/O: Dr. Samaita Das,<br>&nbsp;&nbsp;&nbsp;&nbsp;Sukantapally, Midnapore,<br>&nbsp;&nbsp;&nbsp;&nbsp;West Bengal, India</p>
+        <p>🕐 Mon–Sun: 8 AM – 11 PM</p>
+      </div>
+    </div>
+
+    <!-- Contact highlight strip -->
+    <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:28px 32px;margin:10px 0 36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div style="width:44px;height:44px;border-radius:10px;background:#1a7a3c;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">📞</div>
+        <div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px;">Call Us</div>
+          <a href="tel:+918452044042" style="color:#fff;font-weight:700;font-size:1rem;">+91 84520 44042</a>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div style="width:44px;height:44px;border-radius:10px;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">💬</div>
+        <div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px;">WhatsApp</div>
+          <a href="https://wa.me/918452044042?text=Hi%20Dr.%20Samaita%2C%20I%20would%20like%20to%20book%20a%20consultation." target="_blank" style="color:#fff;font-weight:700;font-size:1rem;">Chat to Book</a>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div style="width:44px;height:44px;border-radius:10px;background:#C8972A;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">📍</div>
+        <div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px;">Clinic Address</div>
+          <div style="color:#fff;font-weight:600;font-size:0.92rem;">Sukantapally, Midnapore, West Bengal</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div style="width:44px;height:44px;border-radius:10px;background:#a0522d;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🕐</div>
+        <div>
+          <div style="font-size:0.75rem;color:rgba(255,255,255,0.5);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px;">Clinic Hours</div>
+          <div style="color:#fff;font-weight:600;font-size:0.92rem;">Mon–Sun: 8 AM – 11 PM</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <div style="color:rgba(255,255,255,0.35);font-size:0.82rem;">© 2026 TheHomeoCare — Dr. Samaita Das, BHMS. All rights reserved.</div>
+      <div style="color:rgba(255,255,255,0.35);font-size:0.82rem;">thehomeocare.com</div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/918452044042" target="_blank" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.78.46 3.45 1.32 4.91L2 22l5.31-1.39a9.85 9.85 0 0 0 4.73 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.78 14.07c-.25.7-1.45 1.34-2 1.42-.51.08-1.16.11-1.87-.12-.43-.14-.98-.32-1.69-.63-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.22-1.62-1.22-3.09 0-1.47.77-2.19 1.05-2.49.27-.3.6-.37.8-.37.2 0 .4.002.57.01.18.01.43-.07.68.52.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.61.17.3.77 1.27 1.65 2.06 1.14 1.02 2.1 1.34 2.4 1.49.3.15.48.13.66-.05.18-.18.77-.9.97-1.2.2-.3.4-.25.67-.15.27.1 1.7.8 2 .95.3.15.5.22.57.34.07.13.07.74-.18 1.44z"/></svg>
+</a>
+
+<script>
+
+
+// Animated stat counter
+function animateCount(el, target, suffix='') {
+  let start = 0;
+  const duration = 2000;
+  const step = (timestamp) => {
+    if (!start) start = timestamp;
+    const progress = Math.min((timestamp - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(eased * target) + (progress === 1 ? suffix : '+');
+    if (progress < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+// Trigger counter when hero is visible
+const statEls = document.querySelectorAll('.stat-num[data-target]');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      statEls.forEach(el => {
+        const target = parseInt(el.dataset.target);
+        animateCount(el, target, '+');
+      });
+      observer.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+if (statEls.length) observer.observe(statEls[0]);
+
+</script>
+</body>
+</html>

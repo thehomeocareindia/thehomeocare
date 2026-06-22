@@ -373,37 +373,17 @@ section{padding:80px 0;}
 .step h3{font-size:0.98rem;font-weight:700;color:var(--blue-dark);margin-bottom:8px;}
 .step p{font-size:0.85rem;color:var(--muted);line-height:1.6;}
 
-/* ===== TESTIMONIALS ===== */
-.testi-bg{background:#fff0f0;}
-.testi-bg .section-head h2{color:#7a1c1c;}
-.testi-bg .section-tag{color:#c0392b;}
-.testi-bg .section-tag::before,.testi-bg .section-tag::after{background:#c0392b;}
-.testi-bg .section-head p{color:#8a4a4a;}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
-.testi-card{
-  background:#fff;border:1px solid #f5c6c6;
-  border-radius:16px;padding:28px;
-  transition:transform .25s,background .25s;
-}
-.testi-card:hover{transform:translateY(-4px);background:#fff8f8;}
-.testi-stars{color:var(--gold);font-size:0.95rem;letter-spacing:2px;margin-bottom:14px;}
-.testi-quote{
-  font-size:0.94rem;color:rgba(255,255,255,0.82);
-  line-height:1.7;margin-bottom:20px;font-style:italic;
-}
-.testi-author{display:flex;align-items:center;gap:12px;}
-.testi-av{
-  width:44px;height:44px;border-radius:50%;
-  background:var(--gold);color:#fff;
-  font-weight:700;font-size:1.1rem;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
-.testi-name{font-weight:700;font-size:0.9rem;color:#fff;}
-.testi-info{font-size:0.8rem;color:rgba(255,255,255,0.5);}
-.testi-disease{
-  display:inline-block;background:rgba(200,151,42,0.25);color:var(--gold);
-  font-size:0.75rem;font-weight:600;padding:3px 10px;border-radius:12px;margin-top:5px;
-}
+
+
+
+
+
+
+
+
+
+
+
 
 /* ===== BOOKING ===== */
 .booking-inner{
@@ -496,7 +476,7 @@ footer{background:#0f2a18;color:#fff;padding:60px 0 0;}
   .about-img-wrap{max-width:320px;margin:0 auto;}
   .process-steps{grid-template-columns:1fr 1fr;gap:30px;}
   .process-steps::after{display:none;}
-  .testi-grid{grid-template-columns:1fr;}
+
   .booking-inner{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr 1fr;}
   .nav-menu{display:none;}
@@ -768,84 +748,7 @@ footer{background:#0f2a18;color:#fff;padding:60px 0 0;}
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="process-bg">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-tag">How It Works</div>
-      <h2>Your Healing Journey in 4 Steps</h2>
-      <p>Simple, structured, and completely patient-friendly — from first consultation to lasting results.</p>
-    </div>
-    <div class="process-steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>Book Your Consultation</h3>
-        <p>Choose an in-clinic or online slot. Pick a date and time that works for you.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>Detailed Case Study</h3>
-        <p>60-minute consultation covering your complete health history, lifestyle, and mental state.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>Personalised Remedy</h3>
-        <p>Constitutional remedy selected specifically for your case — delivered to your door.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <h3>Follow-Up & Recovery</h3>
-        <p>Regular follow-ups every 4–6 weeks to track progress and adjust treatment as needed.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- TESTIMONIALS -->
-<section class="testi-bg" id="testimonials">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-tag">Patient Stories</div>
-      <h2>Real Patients, Real Results</h2>
-      <p>Hundreds of patients have found lasting relief through classical homeopathy. Here are a few of their stories.</p>
-    </div>
-    <div class="testi-grid">
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">My psoriasis patches of 8 years have reduced by over 80% after 6 months of treatment. The doctor took time to understand my stress triggers too — something no one ever asked before.</p>
-        <div class="testi-author">
-          <div class="testi-av">P</div>
-          <div>
-            <div class="testi-name">Priya N.</div>
-            <div class="testi-info">Nagpur <span class="testi-disease">Psoriasis</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">My son's recurring tonsillitis stopped completely within 4 months. No more antibiotics every month. We're so relieved and the online follow-ups made it very convenient.</p>
-        <div class="testi-author">
-          <div class="testi-av">R</div>
-          <div>
-            <div class="testi-name">Rajan M.</div>
-            <div class="testi-info">Pune <span class="testi-disease">Tonsillitis</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">PCOS diagnosed 3 years ago. Cycles irregular, weight gain, hair fall. Started treatment 8 months ago — cycles now regular and ultrasound shows significant improvement in ovaries.</p>
-        <div class="testi-author">
-          <div class="testi-av">S</div>
-          <div>
-            <div class="testi-name">Swati K.</div>
-            <div class="testi-info">Mumbai <span class="testi-disease">PCOS</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- BOOKING -->
 <section id="booking" style="padding:80px 0;">

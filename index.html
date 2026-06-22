@@ -467,16 +467,15 @@ footer{background:#0f2a18;color:#fff;padding:60px 0 0;}
 /* ===== MOBILE ===== */
 @media(max-width:900px){
   .top-contacts .phone-text{display:none;}
-  .hero-inner{grid-template-columns:1fr;}
-  .hero-right{display:none;}
+  .hero-inner{grid-template-columns:1fr;gap:30px;}
+  .hero-right{display:flex;flex-direction:column;}
   .stats-row{grid-template-columns:repeat(3,1fr);}
-  .stats-row .stat-item:nth-child(4),.stats-row .stat-item:nth-child(5){display:none;}
+  .stats-row .stat-item:nth-child(4),.stats-row .stat-item:nth-child(5){display:flex;flex-direction:column;align-items:center;}
   .why-grid{grid-template-columns:1fr 1fr;}
   .about-grid{grid-template-columns:1fr;}
   .about-img-wrap{max-width:320px;margin:0 auto;}
   .process-steps{grid-template-columns:1fr 1fr;gap:30px;}
   .process-steps::after{display:none;}
-
   .booking-inner{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr 1fr;}
   .nav-menu{display:none;}
@@ -493,11 +492,18 @@ footer{background:#0f2a18;color:#fff;padding:60px 0 0;}
     padding:4px 0 4px 16px;
   }
   .form-grid{grid-template-columns:1fr;}
+  .hero h1{font-size:clamp(1.8rem,6vw,2.6rem);}
+  .action-btn{padding:9px 16px;font-size:0.85rem;}
+  .trust-badges{flex-wrap:wrap;}
 }
 @media(max-width:600px){
   .why-grid{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr;}
   .stats-row{grid-template-columns:repeat(2,1fr);}
+  .hero-inner{padding:40px 16px;}
+  .action-strip-inner{flex-direction:column;gap:8px;}
+  .action-btn{width:100%;justify-content:center;}
+  .footer-contact-strip{flex-direction:column;}
 }
 @media(prefers-reduced-motion:reduce){
   .disease-track{animation:none;}
